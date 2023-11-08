@@ -1,0 +1,91 @@
+\documentclass[a4paper, report,12pt,uplatex]{jsbook}
+\setlength{\textwidth}{\fullwidth}
+\setlength{\evensidemargin}{\oddsidemargin}
+\usepackage{thesis}
+\usepackage{makeidx}
+\usepackage{amsmath}
+\usepackage{txfonts, float}
+\usepackage{here}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[noto-otc, unicode]{pxchfon}
+\usepackage{import}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\bibliography{references} % 参考文献bibファイルパス指定
+
+% 目次のハイパーリンクで付録がずれる問題の対応
+\newcounter{chapter_counter}
+\makeatletter
+\@addtoreset{chapter}{chapter_counter}
+\makeatother
+
+\begin{document}
+
+% 表紙 (B4卒業論文)
+\thesis{卒業論文}
+\date{2050年xx月xx日}
+\title{
+    \scalebox{1.5}{論文タイトルを入れる入れる}\\
+    \scalebox{1.5}{君の名は}\\
+    \scalebox{}{}\\
+    \scalebox{1.0}{Please input your thesis title}\\
+    \scalebox{1.0}{Your name}
+}
+\teacher{白濱 亜嵐 教授}
+\organization{
+    {横浜国立大学 理工学部 機械・材料・海洋系学科}\\
+    {海洋空間のシステムデザインEP}
+}
+\author{111111 横浜 海洋}
+
+% 表紙 (M2理工学府修士論文)
+% \thesis{修士論文}
+% \date{2050年xx月xx日}
+% \title{
+%     \scalebox{1.5}{論文タイトルを入れる入れる}\\
+%     \scalebox{1.5}{君の名は}
+%    \scalebox{}{}\\
+%    \scalebox{1.0}{Please input your thesis title}\\
+%    \scalebox{1.0}{Your name}
+% }
+% \teacher{白濱 亜嵐 教授}
+% \organization{
+%     {横浜国立大学 理工学府 機械・材料・海洋系工学専攻}\\
+%     {海洋空間教育プログラム}
+% }
+% \author{111111 横浜 海洋}
+
+\maketitle % 表紙作成コマンド(自作)
+
+% 前書き
+\subincludefrom{abstract/}{main}
+\frontmatter
+\tableofcontents
+\listoffigures
+\listoftables
+
+% 本文
+\mainmatter
+\subincludefrom{introduction/}{main}
+\subincludefrom{related_study/}{main}
+\subincludefrom{proposed_method/}{main}
+\subincludefrom{case_study/}{main}
+\subincludefrom{discussion/}{main}
+\subincludefrom{conclusion/}{main}
+\subincludefrom{acknowledgement/}{main}
+
+% 参考文献
+\printbibliography[heading=bibintoc, title=参考文献]
+
+% 付録
+\subincludefrom{appendix1/}{main} % 使い方を示す例
+\subincludefrom{appendix2/}{main}
+\subincludefrom{appendix3/}{main}
+
+% 後書き
+\backmatter
+\appendix
+
+\printindex
+\end{document}

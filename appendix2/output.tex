@@ -1,0 +1,64 @@
+\documentclass[a4paper, report,12pt,uplatex]{jsbook}
+\setlength{\textwidth}{\fullwidth}
+\setlength{\evensidemargin}{\oddsidemargin}
+\usepackage{thesis}
+\usepackage{makeidx}
+\usepackage{amsmath}
+\usepackage{txfonts, float}
+\usepackage{here}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[noto-otc, unicode]{pxchfon}
+\usepackage{import}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\bibliography{./references} % 参考文献bibファイルパス指定
+
+% 目次のハイパーリンクで付録がずれる問題の対応
+\newcounter{chapter_counter}
+\makeatletter
+\@addtoreset{chapter}{chapter_counter}
+\makeatother
+
+\begin{document}
+
+
+% 表紙 (例M2理工学府PEDポートフォリオ)
+\thesis{理工学府PED M1春学期ポートフォリオ}
+\date{2050年xx月xx日}
+\title{
+    \scalebox{1.5}{論文タイトルを入れる入れる}\\
+    \scalebox{1.5}{君の名は}
+   \scalebox{}{}\\
+   \scalebox{1.0}{Please input your thesis title}\\
+   \scalebox{1.0}{Your name}
+}
+\teacher{白濱 亜嵐 教授}
+\organization{
+    {横浜国立大学 理工学府 機械・材料・海洋系工学専攻}\\
+    {海洋空間教育プログラム}
+}
+\author{111111 横浜 海洋}
+
+\maketitle % 表紙作成コマンド(自作)
+
+% 前書き
+\frontmatter
+\tableofcontents
+\listoffigures
+\listoftables
+
+% 本文
+\mainmatter
+\include{main}
+
+% 参考文献
+\printbibliography[heading=bibintoc, title=参考文献]
+
+
+% 後書き
+\backmatter
+\appendix
+
+\printindex
+\end{document}
